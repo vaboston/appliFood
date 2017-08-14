@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Idée Repas</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous"> -->
+
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <style type="text/css">
+    .btn-circle {
+      width: 30px;
+      height: 30px;
+      text-align: center;
+      padding: 6px 0;
+      font-size: 12px;
+      line-height: 1.428571429;
+      border-radius: 15px;
+    }
+
+    .btn-circle.btn-lg {
+      width: 50px;
+      height: 50px;
+      padding: 10px 16px;
+      font-size: 18px;
+      line-height: 1.33;
+      border-radius: 25px;
+    }
+
+  </style>
+</head>
+<body>
+  <h1 style="margin-bottom: 30px">Idée Repas</h1>
+  <div class="clearfix"></div>
+  <div >
+    <table class="table table-bordered table-condensed table-striped table-inverse">
+      <thead class="thead-inverse">
+        <tr>
+          <th>Nom</th>
+      	  <th>Ingredient 1</th>
+      	  <th>Ingredient 2</th>
+      	  <th>Ingredient 3</th>		
+      	  <th>Ingredient 4</th>
+      	  <th>Ingredient 5</th>
+      	  <th>Ingredient 6</th>	
+      	  <th>Ingredient 7</th>
+      	  <th>Ingredient 8</th>
+      	  <th>Ingredient 9</th>
+      	  <th>Ingredient 10</th>
+      	  <th>Ingredient 11</th>
+      	  <th>Ingredient 12</th>	
+        </tr> 
+      </thead>
+      <tbody>
+        <% for(var i=0; i<results.length; i++) {%>
+        <tr>
+<!--           <td><%= results[i].Index%></td><td><%= results[i].Nom%></td><td><% if(0){ %><%=  results[i].Ingredient2%><% } else{ %>no photos uploaded<% } %></td><td><%=  results[i].Ingredient3%></td><td><%=  results[i].Ingredient4%></td><td><%=  results[i].Ingredient5 %></td>
+ -->
+          <td><%= results[i].Nom%></td><td><% if(results[i].Ingredient2){ %><%=results[i].Ingredient2%><% } else{ %><% } %></td><td><% if(results[i].Ingredient3){ %><%=results[i].Ingredient3%><% } else{ %><% } %></td><td><% if(results[i].Ingredient4){ %><%=results[i].Ingredient4%><% } else{ %><% } %></td><td><% if(results[i].Ingredient5){ %><%=results[i].Ingredient5%><% } else{ %><% } %></td><td><% if(results[i].Ingredient6){ %><%=results[i].Ingredient6%><% } else{ %><% } %></td><td><% if(results[i].Ingredient7){ %><%=results[i].Ingredient7%><% } else{ %><% } %></td><td><% if(results[i].Ingredient8){ %><%=results[i].Ingredient8%><% } else{ %><% } %></td><td><% if(results[i].Ingredient9){ %><%=results[i].Ingredient9%><% } else{ %><% } %></td><td><% if(results[i].Ingredient10){ %><%=results[i].Ingredient10%><% } else{ %><% } %></td><td><% if(results[i].Ingredient11){ %><%=results[i].Ingredient11%><% } else{ %><% } %></td><td><% if(results[i].Ingredient12){ %><%=results[i].Ingredient12%><% } else{ %><% } %></td><td><% if(results[i].Ingredient13){ %><%=results[i].Ingredient13%><% } else{ %><% } %></td>
+
+
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+  <h1>Recette</h1>
+  <form id="addRecette" action="addRecette" method="post">
+    <div class="form-group">
+      <div class="col-xs-3">
+        <label for="exampleInputEmail1"></label>
+        <input type="text" class="form-control" name='nom' placeholder="Nom recette à ajouter">
+      </div>
+      <div class="col-xs-3">
+        <label for="exampleInputEmail1">Ingrédients</label>
+        <div class="col-xl-3">
+        	<SELECT name="Ingredient2" class="selectpicker">
+        	 	<option></option>
+            <% for(var i=0; i<liste.length; i++) {%>
+                  	<option><%= liste[i].Nom%></option>
+                	<% } %>
+	        </SELECT>
+        </div>
+        <div class="col-xl-3">
+          <SELECT name="Ingredient3" class="selectpicker">
+            <option></option>
+            <% for(var i=0; i<liste.length; i++) {%>
+                    <option><%= liste[i].Nom%></option>
+                  <% } %>
+          </SELECT>
+        </div>
+        <div class="col-xl-3">
+          <SELECT name="Ingredient4" class="selectpicker">
+            <option></option>
+            <% for(var i=0; i<liste.length; i++) {%>
+                    <option><%= liste[i].Nom%></option>
+                  <% } %>
+          </SELECT>
+        </div>
+        <div class="col-xl-3">
+          <SELECT name="Ingredient5" class="selectpicker">
+            <option></option>
+            <% for(var i=0; i<liste.length; i++) {%>
+                    <option><%= liste[i].Nom%></option>
+                  <% } %>
+          </SELECT>
+        </div>
+        <div class="col-xl-3">
+          <SELECT name="Ingredient6" class="selectpicker">
+            <option></option>
+            <% for(var i=0; i<liste.length; i++) {%>
+                    <option><%= liste[i].Nom%></option>
+                  <% } %>
+          </SELECT>
+        </div>
+        <div class="col-xl-3">
+          <SELECT name="Ingredient7" class="selectpicker">
+            <option></option>
+            <% for(var i=0; i<liste.length; i++) {%>
+                    <option><%= liste[i].Nom%></option>
+                  <% } %>
+          </SELECT>
+        </div>
+        <div class="col-xl-3">
+          <SELECT name="Ingredient8" class="selectpicker">
+            <option></option>
+            <% for(var i=0; i<liste.length; i++) {%>
+                    <option><%= liste[i].Nom%></option>
+                  <% } %>
+          </SELECT>
+        </div>
+        <div class="col-xl-3">
+          <SELECT name="Ingredient9" class="selectpicker">
+            <option></option>
+            <% for(var i=0; i<liste.length; i++) {%>
+                    <option><%= liste[i].Nom%></option>
+                  <% } %>
+          </SELECT>
+        </div>
+        <div class="col-xl-3">
+          <SELECT name="Ingredient10" class="selectpicker">
+            <option></option>
+            <% for(var i=0; i<liste.length; i++) {%>
+                    <option><%= liste[i].Nom%></option>
+                  <% } %>
+          </SELECT>
+        </div>
+        <div class="col-xl-3">
+          <SELECT name="Ingredient11" class="selectpicker">
+            <option></option>
+            <% for(var i=0; i<liste.length; i++) {%>
+                    <option><%= liste[i].Nom%></option>
+                  <% } %>
+          </SELECT>
+        </div>
+        <div class="col-xl-3">
+          <SELECT name="Ingredient12" class="selectpicker">
+            <option></option>
+            <% for(var i=0; i<liste.length; i++) {%>
+                    <option><%= liste[i].Nom%></option>
+                  <% } %>
+          </SELECT>
+        </div>
+        <div class="col-xl-3">
+          <SELECT name="Ingredient13" class="selectpicker">
+            <option></option>
+            <% for(var i=0; i<liste.length; i++) {%>
+                    <option><%= liste[i].Nom%></option>
+                  <% } %>
+          </SELECT>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-3">
+      <button type="submit" class="btn btn-primary glyphicon btn-circle glyphicon-plus" style="margin-top: 25px"></button>
+    </div>
+  </form>
+  <div class="clearfix"></div>
+   <form id="delRecette" action="delRecette" method="post">
+    <div class="form-group">
+      <div class="col-xs-3">
+        <label for="exampleInputEmail1"></label>
+        <input type="text" class="form-control" name='nom' placeholder="Nom recette à supprimer"></input>
+      </div>
+      <div class="col-xs-3">
+        <button type="submit" class="btn btn-danger btn-circle glyphicon glyphicon-minus"  style="margin-top: 25px" ></button>
+      </div>
+    </div>
+  </form>
+  <div class="clearfix"></div>
+  <h1>Ingrédient</h1>
+  <form id="addIngredient" action="addIngredient" method="post">
+    <div class="form-group">
+      <div class="col-xs-3">
+        <label for="exampleInputEmail1"></label>
+        <input type="text" class="form-control" name='nom' placeholder="Nom Ingredient à ajouter"></input>
+      </div>
+      <div class="col-xs-3">
+        <button type="submit" class="btn btn-primary btn-circle glyphicon glyphicon-plus"  style="margin-top: 25px" ></button>
+      </div>
+    </div>
+  </form>
+  <div class="clearfix"></div>
+  <form id="dellIngredient" action="dellIngredient" method="post">
+    <div class="form-group">
+      <div class="col-xs-3">
+        <label for="exampleInputEmail1"></label>
+        <input type="text" class="form-control" name='nom' placeholder="Nom Ingredient à supprimer"></input>
+      </div>
+      <div class="col-xs-3">
+        <button type="submit" class="btn btn-danger btn-circle glyphicon glyphicon-minus"  style="margin-top: 25px" ></button>
+      </div>
+    </div>
+  </form>
+ 
+ 
+
+</body>
+</html>
