@@ -91,122 +91,105 @@
     </table>
   </div>
   <h1>Recette</h1>
+
   <form id="addRecette" action="addRecette" method="post">
-    <div class="form-group">
-      <div class="col-xs-3">
-        <label for="exampleInputEmail1"></label>
-        <input type="text" class="form-control" name='nom' placeholder="Nom recette à ajouter">
-      </div>
-      <div class="col-xs-3">
-        <label for="exampleInputEmail1">Ingrédients</label>
-        <div class="col-xl-3">
-        <SELECT name="Categorie" class="selectpicker">
+    <div class="form-inline">
+      <div class="row">
+        <div class="col-xs-3">
+          <label for="exampleInputEmail1">Nom</label>
+          <input type="text" class="form-control" name='nom' placeholder="Nom recette à ajouter">
+        </div>
+        <div class="col-xs-3" style="background:red">
+          <label for="exampleInputEmail1">Catégorie</label>
+          <div class="clearfix"></div>
+          <SELECT name="Categorie" class="selectpicker">
             <option></option>
-            <% for(var i=0; i<listeCategorie.length; i++) {%>
-                    <option><%= listeCategorie[i].Nom%></option>
-                  <% } %>
+              <% for(var i=0; i<listeCategorie.length; i++) {%>
+              <option><%= listeCategorie[i].Nom%></option>
+              <% } %>
           </SELECT>
-        	<SELECT name="Saison" class="selectpicker">
+          <SELECT name="Saison" class="selectpicker">
             <option></option>
             <% for(var i=0; i<listeSaison.length; i++) {%>
-                    <option><%= listeSaison[i].Nom%></option>
-                  <% } %>
+              <option><%= listeSaison[i].Nom%></option>
+            <% } %>
           </SELECT>
           <SELECT name="Gras" class="selectpicker">
             <option></option>
             <% for(var i=0; i<listeGras.length; i++) {%>
-                    <option><%= listeGras[i].Nom%></option>
+              <option><%= listeGras[i].Nom%></option>
+            <% } %>
+          </SELECT>
+        </div>
+        <div class="col-xs-3">
+          <label for="exampleInputEmail1">Ingrédients</label>
+          <div class="clearfix"></div>
+          <SELECT name="Ingredient2" class="selectpicker">
+            <option></option>
+            <% for(var i=0; i<listeIngredient.length; i++) {%>
+                    <option><%= listeIngredient[i].Nom%></option>
                   <% } %>
           </SELECT>
-          
-          <SELECT name="Ingredient2" class="selectpicker">
-        	 	<option></option>
-            <% for(var i=0; i<listeIngredient.length; i++) {%>
-                  	<option><%= listeIngredient[i].Nom%></option>
-                	<% } %>
-	        </SELECT>
-        </div>
-        <div class="col-xl-3">
           <SELECT name="Ingredient3" class="selectpicker">
             <option></option>
             <% for(var i=0; i<listeIngredient.length; i++) {%>
                     <option><%= listeIngredient[i].Nom%></option>
                   <% } %>
           </SELECT>
-        </div>
-        <div class="col-xl-3">
           <SELECT name="Ingredient4" class="selectpicker">
             <option></option>
             <% for(var i=0; i<listeIngredient.length; i++) {%>
                     <option><%= listeIngredient[i].Nom%></option>
                   <% } %>
           </SELECT>
-        </div>
-        <div class="col-xl-3">
           <SELECT name="Ingredient5" class="selectpicker">
             <option></option>
             <% for(var i=0; i<listeIngredient.length; i++) {%>
                     <option><%= listeIngredient[i].Nom%></option>
                   <% } %>
           </SELECT>
-        </div>
-        <div class="col-xl-3">
           <SELECT name="Ingredient6" class="selectpicker">
             <option></option>
             <% for(var i=0; i<listeIngredient.length; i++) {%>
                     <option><%= listeIngredient[i].Nom%></option>
                   <% } %>
           </SELECT>
-        </div>
-        <div class="col-xl-3">
           <SELECT name="Ingredient7" class="selectpicker">
             <option></option>
             <% for(var i=0; i<listeIngredient.length; i++) {%>
                     <option><%= listeIngredient[i].Nom%></option>
                   <% } %>
           </SELECT>
-        </div>
-        <div class="col-xl-3">
           <SELECT name="Ingredient8" class="selectpicker">
             <option></option>
             <% for(var i=0; i<listeIngredient.length; i++) {%>
                     <option><%= listeIngredient[i].Nom%></option>
                   <% } %>
           </SELECT>
-        </div>
-        <div class="col-xl-3">
           <SELECT name="Ingredient9" class="selectpicker">
             <option></option>
             <% for(var i=0; i<listeIngredient.length; i++) {%>
                     <option><%= listeIngredient[i].Nom%></option>
                   <% } %>
           </SELECT>
-        </div>
-        <div class="col-xl-3">
           <SELECT name="Ingredient10" class="selectpicker">
             <option></option>
             <% for(var i=0; i<listeIngredient.length; i++) {%>
                     <option><%= listeIngredient[i].Nom%></option>
                   <% } %>
           </SELECT>
-        </div>
-        <div class="col-xl-3">
           <SELECT name="Ingredient11" class="selectpicker">
             <option></option>
             <% for(var i=0; i<listeIngredient.length; i++) {%>
                     <option><%= listeIngredient[i].Nom%></option>
                   <% } %>
           </SELECT>
-        </div>
-        <div class="col-xl-3">
           <SELECT name="Ingredient12" class="selectpicker">
             <option></option>
             <% for(var i=0; i<listeIngredient.length; i++) {%>
                     <option><%= listeIngredient[i].Nom%></option>
                   <% } %>
           </SELECT>
-        </div>
-        <div class="col-xl-3">
           <SELECT name="Ingredient13" class="selectpicker">
             <option></option>
             <% for(var i=0; i<listeIngredient.length; i++) {%>
@@ -214,11 +197,15 @@
                   <% } %>
           </SELECT>
         </div>
+        <div class="col-xs-1">
+          <button type="submit" class="btn btn-primary glyphicon btn-circle glyphicon-plus" style="margin-top: 25px"></button>
+        </div>
       </div>
     </div>
-    <div class="col-xs-3">
-      <button type="submit" class="btn btn-primary glyphicon btn-circle glyphicon-plus" style="margin-top: 25px"></button>
-    </div>
+    
+        </div>
+ 
+      </div>
   </form>
   <div class="clearfix"></div>
    <form id="delRecette" action="delRecette" method="post">
