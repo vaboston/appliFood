@@ -4,6 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Idée Repas</title>
+
+   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous"> -->
@@ -15,7 +17,9 @@
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <style type="text/css">
-    .btn-circle {
+/*Latest compiled and minified JQuery*/
+ 
+/*    .btn-circle {
       width: 30px;
       height: 30px;
       text-align: center;
@@ -32,7 +36,7 @@
       font-size: 18px;
       line-height: 1.33;
       border-radius: 25px;
-    }
+    }*/
 
   </style>
 </head>
@@ -90,162 +94,302 @@
       </tbody>
     </table>
   </div>
-  <h1>Recette</h1>
+  <form id="" action="" method="post">
+    <div class="form-group"> 
+      <SELECT name="Categorie" class="selectpicker">
+          <option></option>
+           <% for(var i=0; i<listeCategorie.length; i++) {%>
+           <option><%= listeCategorie[i].Nom%></option>
+           <% } %>
+        </SELECT>
+        <SELECT name="Saison" class="selectpicker" >
+          <option></option>
+          <% for(var i=0; i<listeSaison.length; i++) {%>
+           <option><%= listeSaison[i].Nom%></option>
+          <% } %>
+        </SELECT>
+        <SELECT name="Gras" class="selectpicker">
+          <option></option>
+          <% for(var i=0; i<listeGras.length; i++) {%>
+            <option><%= listeGras[i].Nom%></option>
+          <% } %>
+        </SELECT>   
+        <label for="exampleInputEmail1"></label>
+        <!-- <input type="text" class="form-control" name='nom' placeholder="Get Recette"></input> -->
+        <button type="submit" class="btn btn-danger btn-circle glyphicon glyphicon-minus" data-toggle="modal" data-target="#getRecet" style="margin-top: 25px">Get Recette</button>
+    </div>
+  </form>
 
-  <form id="addRecette" action="addRecette" method="post">
-    <div class="form-inline">
-      <div class="row">
-        <div class="col-xs-3">
-          <label for="exampleInputEmail1">Nom</label>
-          <input type="text" class="form-control" name='nom' placeholder="Nom recette à ajouter">
-        </div>
-        <div class="col-xs-3" style="background:red">
-          <label for="exampleInputEmail1">Catégorie</label>
-          <div class="clearfix"></div>
-          <SELECT name="Categorie" class="selectpicker">
-            <option></option>
-              <% for(var i=0; i<listeCategorie.length; i++) {%>
-              <option><%= listeCategorie[i].Nom%></option>
-              <% } %>
-          </SELECT>
-          <SELECT name="Saison" class="selectpicker">
-            <option></option>
-            <% for(var i=0; i<listeSaison.length; i++) {%>
-              <option><%= listeSaison[i].Nom%></option>
-            <% } %>
-          </SELECT>
-          <SELECT name="Gras" class="selectpicker">
-            <option></option>
-            <% for(var i=0; i<listeGras.length; i++) {%>
-              <option><%= listeGras[i].Nom%></option>
-            <% } %>
-          </SELECT>
-        </div>
-        <div class="col-xs-3">
-          <label for="exampleInputEmail1">Ingrédients</label>
-          <div class="clearfix"></div>
-          <SELECT name="Ingredient2" class="selectpicker">
-            <option></option>
-            <% for(var i=0; i<listeIngredient.length; i++) {%>
-                    <option><%= listeIngredient[i].Nom%></option>
-                  <% } %>
-          </SELECT>
-          <SELECT name="Ingredient3" class="selectpicker">
-            <option></option>
-            <% for(var i=0; i<listeIngredient.length; i++) {%>
-                    <option><%= listeIngredient[i].Nom%></option>
-                  <% } %>
-          </SELECT>
-          <SELECT name="Ingredient4" class="selectpicker">
-            <option></option>
-            <% for(var i=0; i<listeIngredient.length; i++) {%>
-                    <option><%= listeIngredient[i].Nom%></option>
-                  <% } %>
-          </SELECT>
-          <SELECT name="Ingredient5" class="selectpicker">
-            <option></option>
-            <% for(var i=0; i<listeIngredient.length; i++) {%>
-                    <option><%= listeIngredient[i].Nom%></option>
-                  <% } %>
-          </SELECT>
-          <SELECT name="Ingredient6" class="selectpicker">
-            <option></option>
-            <% for(var i=0; i<listeIngredient.length; i++) {%>
-                    <option><%= listeIngredient[i].Nom%></option>
-                  <% } %>
-          </SELECT>
-          <SELECT name="Ingredient7" class="selectpicker">
-            <option></option>
-            <% for(var i=0; i<listeIngredient.length; i++) {%>
-                    <option><%= listeIngredient[i].Nom%></option>
-                  <% } %>
-          </SELECT>
-          <SELECT name="Ingredient8" class="selectpicker">
-            <option></option>
-            <% for(var i=0; i<listeIngredient.length; i++) {%>
-                    <option><%= listeIngredient[i].Nom%></option>
-                  <% } %>
-          </SELECT>
-          <SELECT name="Ingredient9" class="selectpicker">
-            <option></option>
-            <% for(var i=0; i<listeIngredient.length; i++) {%>
-                    <option><%= listeIngredient[i].Nom%></option>
-                  <% } %>
-          </SELECT>
-          <SELECT name="Ingredient10" class="selectpicker">
-            <option></option>
-            <% for(var i=0; i<listeIngredient.length; i++) {%>
-                    <option><%= listeIngredient[i].Nom%></option>
-                  <% } %>
-          </SELECT>
-          <SELECT name="Ingredient11" class="selectpicker">
-            <option></option>
-            <% for(var i=0; i<listeIngredient.length; i++) {%>
-                    <option><%= listeIngredient[i].Nom%></option>
-                  <% } %>
-          </SELECT>
-          <SELECT name="Ingredient12" class="selectpicker">
-            <option></option>
-            <% for(var i=0; i<listeIngredient.length; i++) {%>
-                    <option><%= listeIngredient[i].Nom%></option>
-                  <% } %>
-          </SELECT>
-          <SELECT name="Ingredient13" class="selectpicker">
-            <option></option>
-            <% for(var i=0; i<listeIngredient.length; i++) {%>
-                    <option><%= listeIngredient[i].Nom%></option>
-                  <% } %>
-          </SELECT>
-        </div>
-        <div class="col-xs-1">
-          <button type="submit" class="btn btn-primary glyphicon btn-circle glyphicon-plus" style="margin-top: 25px"></button>
-        </div>
+
+<!-- ====================================================TEST====================================================== -->
+
+<!-- Trigger the modal with a button -->
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#adRecet">Ajouter Recette</button>
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#delRecet">Supprimer Recette</button>
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#adIngr">Ajouter Ingrédient</button>
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#delIngre">Supprimer Ingrédient</button>
+<button type="submit" class="btn btn-info btn-lg" data-toggle="modal" data-target="#getRecet" style="margin-top: 25px">Get Recette</button>
+
+
+
+
+
+
+<!-- Modal Add Recet-->
+<div id="adRecet" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <h1>Ingrédient</h1>
+        <form id="addRecette" action="addRecette" method="post">
+         <div class="form-inline">
+           <div class="row">
+             <div class="col-xs-5">
+               <label for="exampleInputEmail1">Nom</label>
+               <input type="text" class="form-control" name='nom' placeholder="Nom recette à ajouter">
+             </div>
+             <div class="col-xs-3">
+               <label for="exampleInputEmail1">Catégorie</label>
+               <div class="clearfix"></div>
+               <SELECT name="Categorie" class="selectpicker">
+                 <option></option>
+                   <% for(var i=0; i<listeCategorie.length; i++) {%>
+                   <option><%= listeCategorie[i].Nom%></option>
+                   <% } %>
+               </SELECT>
+               <SELECT name="Saison" class="selectpicker" >
+                 <option></option>
+                 <% for(var i=0; i<listeSaison.length; i++) {%>
+                   <option><%= listeSaison[i].Nom%></option>
+                 <% } %>
+               </SELECT>
+               <SELECT name="Gras" class="selectpicker">
+                 <option></option>
+                 <% for(var i=0; i<listeGras.length; i++) {%>
+                   <option><%= listeGras[i].Nom%></option>
+                 <% } %>
+               </SELECT>
+             </div>
+             <div class="col-xs-3">
+               <label for="exampleInputEmail1">Ingrédients</label>
+               <div class="clearfix"></div>
+               <SELECT name="Ingredient2" class="selectpicker">
+                 <option></option>
+                 <% for(var i=0; i<listeIngredient.length; i++) {%>
+                         <option><%= listeIngredient[i].Nom%></option>
+                       <% } %>
+               </SELECT>
+               <SELECT name="Ingredient3" class="selectpicker">
+                 <option></option>
+                 <% for(var i=0; i<listeIngredient.length; i++) {%>
+                         <option><%= listeIngredient[i].Nom%></option>
+                       <% } %>
+               </SELECT>
+               <SELECT name="Ingredient4" class="selectpicker">
+                 <option></option>
+                 <% for(var i=0; i<listeIngredient.length; i++) {%>
+                         <option><%= listeIngredient[i].Nom%></option>
+                       <% } %>
+               </SELECT>
+               <SELECT name="Ingredient5" class="selectpicker">
+                 <option></option>
+                 <% for(var i=0; i<listeIngredient.length; i++) {%>
+                         <option><%= listeIngredient[i].Nom%></option>
+                       <% } %>
+               </SELECT>
+               <SELECT name="Ingredient6" class="selectpicker">
+                 <option></option>
+                 <% for(var i=0; i<listeIngredient.length; i++) {%>
+                         <option><%= listeIngredient[i].Nom%></option>
+                       <% } %>
+               </SELECT>
+               <SELECT name="Ingredient7" class="selectpicker">
+                 <option></option>
+                 <% for(var i=0; i<listeIngredient.length; i++) {%>
+                         <option><%= listeIngredient[i].Nom%></option>
+                       <% } %>
+               </SELECT>
+               <SELECT name="Ingredient8" class="selectpicker">
+                 <option></option>
+                 <% for(var i=0; i<listeIngredient.length; i++) {%>
+                         <option><%= listeIngredient[i].Nom%></option>
+                       <% } %>
+               </SELECT>
+               <SELECT name="Ingredient9" class="selectpicker">
+                 <option></option>
+                 <% for(var i=0; i<listeIngredient.length; i++) {%>
+                         <option><%= listeIngredient[i].Nom%></option>
+                       <% } %>
+               </SELECT>
+               <SELECT name="Ingredient10" class="selectpicker">
+                 <option></option>
+                 <% for(var i=0; i<listeIngredient.length; i++) {%>
+                         <option><%= listeIngredient[i].Nom%></option>
+                       <% } %>
+               </SELECT>
+               <SELECT name="Ingredient11" class="selectpicker">
+                 <option></option>
+                 <% for(var i=0; i<listeIngredient.length; i++) {%>
+                         <option><%= listeIngredient[i].Nom%></option>
+                       <% } %>
+               </SELECT>
+               <SELECT name="Ingredient12" class="selectpicker">
+                 <option></option>
+                 <% for(var i=0; i<listeIngredient.length; i++) {%>
+                         <option><%= listeIngredient[i].Nom%></option>
+                       <% } %>
+               </SELECT>
+               <SELECT name="Ingredient13" class="selectpicker">
+                 <option></option>
+                 <% for(var i=0; i<listeIngredient.length; i++) {%>
+                         <option><%= listeIngredient[i].Nom%></option>
+                       <% } %>
+               </SELECT>
+             </div>
+             <div class="modal-footer">
+               <button type="submit" class="btn btn-primary" style="margin-top: 25px">Add</button>
+             </div>
+           </div>
+         </div>
+       </form>
       </div>
     </div>
-    
-        </div>
+  </div>
+</div>
+
+
+
+
+
+
+<!-- Modal Del Recet-->
+<div id="delRecet" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <h1>Ingrédient</h1>
+        <form id="delRecette" action="delRecette" method="post">
+          <div class="form-group">
+            <div class="col-xs-3">
+              <label for="exampleInputEmail1"></label>
+              <input type="text" class="form-control" name='nom' placeholder="Nom recette à supprimer"></input>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-danger"  style="margin-top: 25px" >Delete</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal Add Ingr-->
+<div id="adIngr" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <h1>Ingrédient</h1>
+        <form id="addIngredient" action="addIngredient" method="post">
+          <div class="form-group">
+              <label for="exampleInputEmail1"></label>
+              <input type="text" class="form-control" name='nom' placeholder="Nom Ingredient à ajouter"></input>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Add</button>
+              </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Del Ingr-->
+<div id="delIngre" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <h1>Ingrédient</h1>
+        <form id="dellIngredient" action="dellIngredient" method="post">
+          <div class="form-group">    
+              <label for="exampleInputEmail1"></label>
+              <input type="text" class="form-control" name='nom' placeholder="Nom Ingredient à supprimer"></input>
+              <!-- <button type="submit" class="btn btn-danger btn-circle glyphicon glyphicon-minus"  style="margin-top: 25px" ></button> -->
+          </div>
+        </form> 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
  
+ <!-- Modal Get Recette-->
+<div id="getRecet" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
       </div>
-  </form>
-  <div class="clearfix"></div>
-   <form id="delRecette" action="delRecette" method="post">
-    <div class="form-group">
-      <div class="col-xs-3">
+      <div class="modal-body">
+  <form id="getRecette" action="getRecette" method="post">
+    <div class="form-group"> 
+      <SELECT name="Categorie" class="selectpicker">
+          <option></option>
+           <% for(var i=0; i<listeCategorie.length; i++) {%>
+           <option><%= listeCategorie[i].Nom%></option>
+           <% } %>
+        </SELECT>
+        <SELECT name="Saison" class="selectpicker" >
+          <option></option>
+          <% for(var i=0; i<listeSaison.length; i++) {%>
+           <option><%= listeSaison[i].Nom%></option>
+          <% } %>
+        </SELECT>
+        <SELECT name="Gras" class="selectpicker">
+          <option></option>
+          <% for(var i=0; i<listeGras.length; i++) {%>
+           <option><%= listeGras[i].Nom%></option>
+          <% } %>
+        </SELECT>   
         <label for="exampleInputEmail1"></label>
-        <input type="text" class="form-control" name='nom' placeholder="Nom recette à supprimer"></input>
-      </div>
-      <div class="col-xs-3">
-        <button type="submit" class="btn btn-danger btn-circle glyphicon glyphicon-minus"  style="margin-top: 25px" ></button>
-      </div>
+        <!-- <input type="text" class="form-control" name='nom' placeholder="Get Recette"></input> -->
+        <button type="submit" class="btn btn-danger btn-circle glyphicon glyphicon-minus" data-toggle="modal" data-target="#getRecet" style="margin-top: 25px">Get Recette</button>
     </div>
   </form>
-  <div class="clearfix"></div>
-  <h1>Ingrédient</h1>
-  <form id="addIngredient" action="addIngredient" method="post">
-    <div class="form-group">
-      <div class="col-xs-3">
-        <label for="exampleInputEmail1"></label>
-        <input type="text" class="form-control" name='nom' placeholder="Nom Ingredient à ajouter"></input>
       </div>
-      <div class="col-xs-3">
-        <button type="submit" class="btn btn-primary btn-circle glyphicon glyphicon-plus"  style="margin-top: 25px" ></button>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Delete</button>
       </div>
     </div>
-  </form>
-  <div class="clearfix"></div>
-  <form id="dellIngredient" action="dellIngredient" method="post">
-    <div class="form-group">
-      <div class="col-xs-3">
-        <label for="exampleInputEmail1"></label>
-        <input type="text" class="form-control" name='nom' placeholder="Nom Ingredient à supprimer"></input>
-      </div>
-      <div class="col-xs-3">
-        <button type="submit" class="btn btn-danger btn-circle glyphicon glyphicon-minus"  style="margin-top: 25px" ></button>
-      </div>
-    </div>
-  </form>
- 
- 
+  </div>
+</div>
+
 
 </body>
 </html>
