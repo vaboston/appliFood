@@ -44,6 +44,9 @@
       <thead class="thead-inverse">
         <tr>
           <th>Nom</th>
+          <th>Categorie</th>
+          <th>Gras</th>
+          <th>Saison</th>
       	  <th>Ingredient 1</th>
       	  <th>Ingredient 2</th>
       	  <th>Ingredient 3</th>		
@@ -63,7 +66,23 @@
         <tr>
 <!--           <td><%= results[i].Index%></td><td><%= results[i].Nom%></td><td><% if(0){ %><%=  results[i].Ingredient2%><% } else{ %>no photos uploaded<% } %></td><td><%=  results[i].Ingredient3%></td><td><%=  results[i].Ingredient4%></td><td><%=  results[i].Ingredient5 %></td>
  -->
-          <td><%= results[i].Nom%></td><td><% if(results[i].Ingredient2){ %><%=results[i].Ingredient2%><% } else{ %><% } %></td><td><% if(results[i].Ingredient3){ %><%=results[i].Ingredient3%><% } else{ %><% } %></td><td><% if(results[i].Ingredient4){ %><%=results[i].Ingredient4%><% } else{ %><% } %></td><td><% if(results[i].Ingredient5){ %><%=results[i].Ingredient5%><% } else{ %><% } %></td><td><% if(results[i].Ingredient6){ %><%=results[i].Ingredient6%><% } else{ %><% } %></td><td><% if(results[i].Ingredient7){ %><%=results[i].Ingredient7%><% } else{ %><% } %></td><td><% if(results[i].Ingredient8){ %><%=results[i].Ingredient8%><% } else{ %><% } %></td><td><% if(results[i].Ingredient9){ %><%=results[i].Ingredient9%><% } else{ %><% } %></td><td><% if(results[i].Ingredient10){ %><%=results[i].Ingredient10%><% } else{ %><% } %></td><td><% if(results[i].Ingredient11){ %><%=results[i].Ingredient11%><% } else{ %><% } %></td><td><% if(results[i].Ingredient12){ %><%=results[i].Ingredient12%><% } else{ %><% } %></td><td><% if(results[i].Ingredient13){ %><%=results[i].Ingredient13%><% } else{ %><% } %></td>
+          <td><%= results[i].Nom%></td>
+          <td><% if(results[i].Categorie){ %><%=results[i].Categorie%><% } else{ %><% } %></td>
+          <td><% if(results[i].Gras){ %><%=results[i].Gras%><% } else{ %><% } %></td>
+          <td><% if(results[i].Saison){ %><%=results[i].Saison%><% } else{ %><% } %></td>
+          <td><% if(results[i].Ingredient2){ %><%=results[i].Ingredient2%><% } else{ %><% } %></td>
+          <td><% if(results[i].Ingredient2){ %><%=results[i].Ingredient2%><% } else{ %><% } %></td>
+          <td><% if(results[i].Ingredient3){ %><%=results[i].Ingredient3%><% } else{ %><% } %></td>
+          <td><% if(results[i].Ingredient4){ %><%=results[i].Ingredient4%><% } else{ %><% } %></td>
+          <td><% if(results[i].Ingredient5){ %><%=results[i].Ingredient5%><% } else{ %><% } %></td>
+          <td><% if(results[i].Ingredient6){ %><%=results[i].Ingredient6%><% } else{ %><% } %></td>
+          <td><% if(results[i].Ingredient7){ %><%=results[i].Ingredient7%><% } else{ %><% } %></td>
+          <td><% if(results[i].Ingredient8){ %><%=results[i].Ingredient8%><% } else{ %><% } %></td>
+          <td><% if(results[i].Ingredient9){ %><%=results[i].Ingredient9%><% } else{ %><% } %></td>
+          <td><% if(results[i].Ingredient10){ %><%=results[i].Ingredient10%><% } else{ %><% } %></td>
+          <td><% if(results[i].Ingredient11){ %><%=results[i].Ingredient11%><% } else{ %><% } %></td>
+          <td><% if(results[i].Ingredient12){ %><%=results[i].Ingredient12%><% } else{ %><% } %></td>
+          <td><% if(results[i].Ingredient13){ %><%=results[i].Ingredient13%><% } else{ %><% } %></td>
 
 
         </tr>
@@ -81,98 +100,117 @@
       <div class="col-xs-3">
         <label for="exampleInputEmail1">Ingrédients</label>
         <div class="col-xl-3">
-        	<SELECT name="Ingredient2" class="selectpicker">
+        <SELECT name="Categorie" class="selectpicker">
+            <option></option>
+            <% for(var i=0; i<listeCategorie.length; i++) {%>
+                    <option><%= listeCategorie[i].Nom%></option>
+                  <% } %>
+          </SELECT>
+        	<SELECT name="Saison" class="selectpicker">
+            <option></option>
+            <% for(var i=0; i<listeSaison.length; i++) {%>
+                    <option><%= listeSaison[i].Nom%></option>
+                  <% } %>
+          </SELECT>
+          <SELECT name="Gras" class="selectpicker">
+            <option></option>
+            <% for(var i=0; i<listeGras.length; i++) {%>
+                    <option><%= listeGras[i].Nom%></option>
+                  <% } %>
+          </SELECT>
+          
+          <SELECT name="Ingredient2" class="selectpicker">
         	 	<option></option>
-            <% for(var i=0; i<liste.length; i++) {%>
-                  	<option><%= liste[i].Nom%></option>
+            <% for(var i=0; i<listeIngredient.length; i++) {%>
+                  	<option><%= listeIngredient[i].Nom%></option>
                 	<% } %>
 	        </SELECT>
         </div>
         <div class="col-xl-3">
           <SELECT name="Ingredient3" class="selectpicker">
             <option></option>
-            <% for(var i=0; i<liste.length; i++) {%>
-                    <option><%= liste[i].Nom%></option>
+            <% for(var i=0; i<listeIngredient.length; i++) {%>
+                    <option><%= listeIngredient[i].Nom%></option>
                   <% } %>
           </SELECT>
         </div>
         <div class="col-xl-3">
           <SELECT name="Ingredient4" class="selectpicker">
             <option></option>
-            <% for(var i=0; i<liste.length; i++) {%>
-                    <option><%= liste[i].Nom%></option>
+            <% for(var i=0; i<listeIngredient.length; i++) {%>
+                    <option><%= listeIngredient[i].Nom%></option>
                   <% } %>
           </SELECT>
         </div>
         <div class="col-xl-3">
           <SELECT name="Ingredient5" class="selectpicker">
             <option></option>
-            <% for(var i=0; i<liste.length; i++) {%>
-                    <option><%= liste[i].Nom%></option>
+            <% for(var i=0; i<listeIngredient.length; i++) {%>
+                    <option><%= listeIngredient[i].Nom%></option>
                   <% } %>
           </SELECT>
         </div>
         <div class="col-xl-3">
           <SELECT name="Ingredient6" class="selectpicker">
             <option></option>
-            <% for(var i=0; i<liste.length; i++) {%>
-                    <option><%= liste[i].Nom%></option>
+            <% for(var i=0; i<listeIngredient.length; i++) {%>
+                    <option><%= listeIngredient[i].Nom%></option>
                   <% } %>
           </SELECT>
         </div>
         <div class="col-xl-3">
           <SELECT name="Ingredient7" class="selectpicker">
             <option></option>
-            <% for(var i=0; i<liste.length; i++) {%>
-                    <option><%= liste[i].Nom%></option>
+            <% for(var i=0; i<listeIngredient.length; i++) {%>
+                    <option><%= listeIngredient[i].Nom%></option>
                   <% } %>
           </SELECT>
         </div>
         <div class="col-xl-3">
           <SELECT name="Ingredient8" class="selectpicker">
             <option></option>
-            <% for(var i=0; i<liste.length; i++) {%>
-                    <option><%= liste[i].Nom%></option>
+            <% for(var i=0; i<listeIngredient.length; i++) {%>
+                    <option><%= listeIngredient[i].Nom%></option>
                   <% } %>
           </SELECT>
         </div>
         <div class="col-xl-3">
           <SELECT name="Ingredient9" class="selectpicker">
             <option></option>
-            <% for(var i=0; i<liste.length; i++) {%>
-                    <option><%= liste[i].Nom%></option>
+            <% for(var i=0; i<listeIngredient.length; i++) {%>
+                    <option><%= listeIngredient[i].Nom%></option>
                   <% } %>
           </SELECT>
         </div>
         <div class="col-xl-3">
           <SELECT name="Ingredient10" class="selectpicker">
             <option></option>
-            <% for(var i=0; i<liste.length; i++) {%>
-                    <option><%= liste[i].Nom%></option>
+            <% for(var i=0; i<listeIngredient.length; i++) {%>
+                    <option><%= listeIngredient[i].Nom%></option>
                   <% } %>
           </SELECT>
         </div>
         <div class="col-xl-3">
           <SELECT name="Ingredient11" class="selectpicker">
             <option></option>
-            <% for(var i=0; i<liste.length; i++) {%>
-                    <option><%= liste[i].Nom%></option>
+            <% for(var i=0; i<listeIngredient.length; i++) {%>
+                    <option><%= listeIngredient[i].Nom%></option>
                   <% } %>
           </SELECT>
         </div>
         <div class="col-xl-3">
           <SELECT name="Ingredient12" class="selectpicker">
             <option></option>
-            <% for(var i=0; i<liste.length; i++) {%>
-                    <option><%= liste[i].Nom%></option>
+            <% for(var i=0; i<listeIngredient.length; i++) {%>
+                    <option><%= listeIngredient[i].Nom%></option>
                   <% } %>
           </SELECT>
         </div>
         <div class="col-xl-3">
           <SELECT name="Ingredient13" class="selectpicker">
             <option></option>
-            <% for(var i=0; i<liste.length; i++) {%>
-                    <option><%= liste[i].Nom%></option>
+            <% for(var i=0; i<listeIngredient.length; i++) {%>
+                    <option><%= listeIngredient[i].Nom%></option>
                   <% } %>
           </SELECT>
         </div>

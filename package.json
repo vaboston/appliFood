@@ -6,7 +6,8 @@
     "ejs": "~2.1.4",
     "cookie-session": "~1.1.0",
     "body-parser": "~1.10.2",
-    "bootstrap": "~3.3.7"
+    "bootstrap": "~3.3.7",
+    "mysql": "2.14.1"
   },
   "author": "Vabo <valentin@network.fr>",
   "description": "Un test"

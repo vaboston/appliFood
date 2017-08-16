@@ -23,9 +23,24 @@ var connection = mysql.createConnection({
 
 app.get("/",function(req,res){
 	connection.connect(function(err, callback){
-		liste = [];
+		listeIngredient = [];
 		connection.query('SELECT Nom FROM Ingredient', function(err, rows, fields) {
-			liste = rows;
+			listeIngredient = rows;
+			//console.log("liste : ", liste);
+		});
+		listeSaison = [];
+		connection.query('SELECT Nom FROM Saison', function(err, rows, fields) {
+			listeSaison = rows;
+			//console.log("liste : ", liste);
+		});
+		listeGras = [];
+		connection.query('SELECT Nom FROM Gras', function(err, rows, fields) {
+			listeGras = rows;
+			//console.log("liste : ", liste);
+		});
+		listeCategorie = [];
+		connection.query('SELECT Nom FROM Categorie', function(err, rows, fields) {
+			listeCategorie = rows;
 			//console.log("liste : ", liste);
 		});
 		connection.query('SELECT * FROM Recette', function(err, rows, fields) {
