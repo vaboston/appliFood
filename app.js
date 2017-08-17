@@ -73,7 +73,7 @@ app.get("/",function(req,res){
 
     
 
-
+    req.session.views = 'Gras'
 
 	tototo = JeanClaude;
 
@@ -102,8 +102,10 @@ app.get("/",function(req,res){
 		connection.query('SELECT * FROM Recette', function(err, rows, fields) {
 			// if (req.session.views) {console.log(res.session.views);}
 			console.log(req.session.views)
-			Gras = req.session.views
-			res.render('home', {results: rows, gras: 'Gras', select: 'selected'});
+			CookieGras = req.session.gras;
+			CookieSaison = req.session.saison;
+			CookieCategorie = req.session.categorie;
+			res.render('home', {results: rows, saison: CookieSaison, gras: CookieGras, categorie: CookieCategorie, select: 'selected'});
 			if (!err)
 				//console.log('The solution is: ', rows);
 				console.log('The solution is:');
@@ -221,9 +223,21 @@ app.post('/getRecette', function (req, res) {
 	number = req.body.recette
 
 // select * from table order by rand() limit 10
+	queryString = 'SELECT * FROM Recette WHERE'
+
+	if (req.body.Categorie ) { queryString = queryString + ' Categorie = ' + connection.escape(req.body.Categorie)}
+	if (req.body.Saison && req.body.Categorie) {queryString = queryString + 'and  Saison = ' + connection.escape(req.body.Saison)}
+	if (req.body.Gras && req.body.Categorie) {queryString = queryString + 'and  Gras = ' + connection.escape(req.body.Gras)}
+
+	if (req.body.Saison && !req.body.Categorie) {queryString = queryString + ' Saison = ' + connection.escape(req.body.Saison)}
+	
+	if (req.body.Gras && !req.body.Categorie && !req.body.Saison) {queryString = queryString + ' Gras = ' + connection.escape(req.body.Gras)}
 
 
-   queryString = 'SELECT * FROM Recette WHERE Categorie = ' + connection.escape(req.body.Categorie) + ' and Gras = ' + connection.escape(req.body.Gras) + ' order by rand() limit 1'
+	if (!req.body.Categorie && !req.body.Saison && !req.body.Gras) {queryString = 'SELECT * FROM Recette'}
+   // queryString = 'SELECT * FROM Recette WHERE Categorie = ' + connection.escape(req.body.Categorie) + ' and Gras = ' + connection.escape(req.body.Gras)+ ' and Saison = ' + connection.escape(req.body.Saison) + ' order by rand() limit 1'
+	
+	queryString = queryString + ' order by rand() limit 1'
 	connection.query(queryString, function(err, rows, fields) {
 		let options = {
 	        maxAge: 1000 * 60 * 15, // would expire after 15 minutes
@@ -232,9 +246,13 @@ app.post('/getRecette', function (req, res) {
 	    }
 
 	    // Set cookie
-    	req.session.views = 'Gras'
+    	req.session.gras = req.body.Gras;
+    	// req.session.categorie = req.body.Categorie;
+    	req.session.saison = req.body.Saison;
+    	req.session.categorie = req.body.Categorie;
     	console.log('gras :  ?', req.session.views);
-		res.render('home', {results: rows, gras: req.session.views, select: 'selected'});
+		// res.render('home', {results: rows, gras: req.session.gras, categorie: req.session.categorie, saison: req.session.saison, select: 'selected'});
+		res.render('home', {results: rows, saison: req.session.saison, gras: req.session.gras, categorie: req.session.categorie, select: 'selected'});
 
 			// res.render('home', {results: rows});
 			if (!err)

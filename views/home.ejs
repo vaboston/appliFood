@@ -16,7 +16,10 @@
 
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
   <style type="text/css">
+
+
 /*Latest compiled and minified JQuery*/
  
 /*    .btn-circle {
@@ -37,32 +40,48 @@
       line-height: 1.33;
       border-radius: 25px;
     }*/
+    body {
+color:black;
+background-color:white;
+background-image:url(https://images.pexels.com/photos/349609/pexels-photo-349609.jpeg?w=940&h=650&auto=compress&cs=tinysrgb);
+  height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
   </style>
 </head>
 <body>
-  <h1 style="margin-bottom: 30px">Idée Repas</h1>
+  
+<form action="http://valentinbouin.fr:3000">
+<label style="font-size: 50px">Idée Repas</label>
+    <input type="submit" value="Toutes les recettes" />
+</form>  
   <div class="clearfix"></div>
   <div >
-    <table class="table table-bordered table-condensed table-striped table-inverse">
+    <table class="table table-condensed table-bordered" >
       <thead class="thead-inverse">
+        <!-- <tr style="background-color: rgba(255, 255, 255, 20);font-size: 20px;"> -->
         <tr>
           <th>Nom</th>
           <th>Categorie</th>
           <th>Gras</th>
           <th>Saison</th>
-      	  <th>Ingredient 1</th>
-      	  <th>Ingredient 2</th>
-      	  <th>Ingredient 3</th>		
-      	  <th>Ingredient 4</th>
-      	  <th>Ingredient 5</th>
-      	  <th>Ingredient 6</th>	
-      	  <th>Ingredient 7</th>
-      	  <th>Ingredient 8</th>
-      	  <th>Ingredient 9</th>
-      	  <th>Ingredient 10</th>
-      	  <th>Ingredient 11</th>
-      	  <th>Ingredient 12</th>	
+      	  <th>Ingredient1</th>
+      	  <th>Ingredient2</th>
+      	  <th>Ingredient3</th>		
+      	  <th>Ingredient4</th>
+      	  <th>Ingredient5</th>
+      	  <th>Ingredient6</th>	
+      	  <th>Ingredient7</th>
+      	  <th>Ingredient8</th>
+      	  <th>Ingredient9</th>
+      	  <th>Ingredient10</th>
+      	  <th>Ingredient11</th>
+      	  <th>Ingredient12</th>	
         </tr> 
       </thead>
       <tbody>
@@ -70,10 +89,14 @@
         <tr>
 <!--           <td><%= results[i].Index%></td><td><%= results[i].Nom%></td><td><% if(0){ %><%=  results[i].Ingredient2%><% } else{ %>no photos uploaded<% } %></td><td><%=  results[i].Ingredient3%></td><td><%=  results[i].Ingredient4%></td><td><%=  results[i].Ingredient5 %></td>
  -->
-          <td><%= results[i].Nom%></td>
-          <td><% if(results[i].Categorie){ %><%=results[i].Categorie%><% } else{ %><% } %></td>
-          <td><% if(results[i].Gras){ %><%=results[i].Gras%><% } else{ %><% } %></td>
-          <td><% if(results[i].Saison){ %><%=results[i].Saison%><% } else{ %><% } %></td>
+      <!--     <td style="font-size: 20px; background-color: rgba(200, 200, 200, 50);font-weight:bold;"><%= results[i].Nom%></td>
+          <td style="font-size: 20px; background-color: rgba(200, 200, 200, 50);"><% if(results[i].Categorie){ %><%=results[i].Categorie%><% } else{ %><% } %></td>
+          <td style="font-size: 20px; background-color: rgba(200, 200, 200, 50);"><% if(results[i].Gras){ %><%=results[i].Gras%><% } else{ %><% } %></td>
+          <td style="font-size: 20px; background-color: rgba(200, 200, 200, 50);"><% if(results[i].Saison){ %><%=results[i].Saison%><% } else{ %><% } %></td> -->
+              <td style="font-weight:bold;"><%= results[i].Nom%></td>
+          <td ><% if(results[i].Categorie){ %><%=results[i].Categorie%><% } else{ %><% } %></td>
+          <td ><% if(results[i].Gras){ %><%=results[i].Gras%><% } else{ %><% } %></td>
+          <td ><% if(results[i].Saison){ %><%=results[i].Saison%><% } else{ %><% } %></td>
           <td><% if(results[i].Ingredient2){ %><%=results[i].Ingredient2%><% } else{ %><% } %></td>
           <td><% if(results[i].Ingredient2){ %><%=results[i].Ingredient2%><% } else{ %><% } %></td>
           <td><% if(results[i].Ingredient3){ %><%=results[i].Ingredient3%><% } else{ %><% } %></td>
@@ -94,29 +117,40 @@
       </tbody>
     </table>
   </div>
-  <form id="" action="" method="post">
-    <div class="form-group"> 
-      <SELECT name="Categorie" class="selectpicker">
+  <h1>Recette au hasard</h1>
+
+  <form id="getRecette" action="getRecette" method="post">
+    <div class="form-group">
+<!--     <select value="4">
+      <option selected disabled hidden>Choose here</option>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+      <option value="4">Four</option>
+      <option value="5">Five</option>
+    </select>  -->    
+  <SELECT name="Categorie" class="selectpicker">
           <option></option>
            <% for(var i=0; i<listeCategorie.length; i++) {%>
-           <option><%= listeCategorie[i].Nom%></option>
+            <option <% if(listeCategorie[i].Nom == categorie ){ %><%=select%><% } else{ %><% } %>><%= listeCategorie[i].Nom%></option>
+
            <% } %>
         </SELECT>
+        <SELECT name="Gras">
+          <option></option>
+          <% for(var i=0; i<listeGras.length; i++) {%>
+            <option <% if(listeGras[i].Nom == gras ){ %><%=select%><% } else{ %><% } %>><%= listeGras[i].Nom%></option>
+          <% } %>
+        </SELECT>  
         <SELECT name="Saison" class="selectpicker" >
           <option></option>
           <% for(var i=0; i<listeSaison.length; i++) {%>
-           <option><%= listeSaison[i].Nom%></option>
+            <option <% if(listeSaison[i].Nom == saison ){ %><%=select%><% } else{ %><% } %>><%= listeSaison[i].Nom%></option>
           <% } %>
-        </SELECT>
-        <SELECT name="Gras" class="selectpicker">
-          <option></option>
-          <% for(var i=0; i<listeGras.length; i++) {%>
-            <option><%= listeGras[i].Nom%></option>
-          <% } %>
-        </SELECT>   
+        </SELECT> 
         <label for="exampleInputEmail1"></label>
         <!-- <input type="text" class="form-control" name='nom' placeholder="Get Recette"></input> -->
-        <button type="submit" class="btn btn-danger btn-circle glyphicon glyphicon-minus" data-toggle="modal" data-target="#getRecet" style="margin-top: 25px">Get Recette</button>
+        <button type="submit" class="btn btn-info btn-lg" >Get Recette</button>
     </div>
   </form>
 
@@ -124,11 +158,14 @@
 <!-- ====================================================TEST====================================================== -->
 
 <!-- Trigger the modal with a button -->
-<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#adRecet">Ajouter Recette</button>
-<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#delRecet">Supprimer Recette</button>
-<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#adIngr">Ajouter Ingrédient</button>
-<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#delIngre">Supprimer Ingrédient</button>
-<button type="submit" class="btn btn-info btn-lg" data-toggle="modal" data-target="#getRecet" style="margin-top: 25px">Get Recette</button>
+<h1>Recettes</h1>
+<button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#adRecet">Ajouter Recette</button>
+<button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#delRecet">Supprimer Recette</button>
+<div class="clearfix"></div>
+<h1>Ingredients</h1>
+<button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#adIngr">Ajouter Ingrédient</button>
+<button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#delIngre">Supprimer Ingrédient</button>
+<!-- <button type="submit" class="btn btn-info btn-lg" data-toggle="modal" data-target="#getRecet" style="margin-top: 25px">Get Recette</button> -->
 
 
 
