@@ -1,4 +1,12 @@
 # appliFood
 
-Appliation pour entrer ses plats préférés, mettre des catégories et en choisir un aléatoirement, suivant des filtres.
+Simple recipe appli, with random result.
 
+-----------------------------------------------
+
+Add recipe ? Easy : 
+curl -d '{"ingredient":"fromage,pain,bacon"}' -H "Content-Type: application/json" -X POST http://localhost:5000/recette/raclette
+
+
+Get random recipe ? Easy too : 
+curl  -X GET http://localhost:5000/randomrecette
